@@ -11,7 +11,7 @@ detector = htm.handDetector()
 while True:
     success, img = cap.read()
     img = detector.findHands(img)
-    lmList = detector.findPosition(img, draw=False)
+    lmList = detector.findPosition(img, draw=True)
 
     if len(lmList) != 0:
         print(lmList[8])
@@ -20,8 +20,8 @@ while True:
     fps = 1 / (cTime - pTime)
     pTime = cTime
 
-    cv2.putText(img, str(int(fps)), (10, 70), cv2.FONT_HERSHEY_PLAIN, 3,
-                    (255, 0, 255), 3)
+    cv2.putText(img, str(int(fps)), (20, 30), cv2.FONT_HERSHEY_PLAIN, 2,
+                    (255, 255, 255), 1)
 
     cv2.imshow("Image", img)
     cv2.waitKey(1)
